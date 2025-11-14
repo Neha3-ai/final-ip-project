@@ -1,0 +1,73 @@
+:root{
+  --bg: #071029;
+  --card:#0b1a2a;
+  --muted:#98a8bf;
+  --accent:#22d3ee;
+  --accent-2:#8b5cf6;
+  --panel-frost: rgba(255,255,255,0.92);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* page background (dark) */
+html,body{height:100%;margin:0;background:linear-gradient(180deg,#041223 0%, #071029 60%); color:#e6f0ff;}
+.wrap{max-width:1200px;margin:24px auto;padding:20px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);box-shadow:0 12px 32px rgba(34,211,238,0.04);display:grid;grid-template-columns:380px 1fr;gap:18px;}
+header{grid-column:1/-1;display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#021224}
+header h1{margin:0;font-size:18px;color:var(--accent)}
+.subtitle{margin:3px 0 0 0;color:var(--muted);font-size:13px}
+
+/* panels */
+.panel{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+.controls h3{margin:8px 0 6px 0;color:#cfefff}
+.city-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chip{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);font-size:13px;color:var(--muted);cursor:pointer;user-select:none}
+.chip.checked{background:linear-gradient(90deg, rgba(34,211,238,0.06), rgba(139,92,246,0.04));color:var(--accent);border:1px solid rgba(34,211,238,0.12)}
+
+/* city selects and card inputs */
+.city-select{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:#ffffffeb;color:#1a0818;margin-bottom:8px}
+.card-input{
+  background: var(--panel-frost);
+  border-radius:10px;
+  padding:8px;
+  box-shadow: 0 6px 18px rgba(2,8,23,0.06);
+  color:#30270b;
+  border:1px solid rgba(6,30,45,0.06);
+}
+.list{max-height:220px;overflow:auto;padding-right:6px}
+.list .loc{display:flex;align-items:center;gap:10px;padding:8px;border-radius:8px;margin-bottom:6px;cursor:pointer}
+.list .loc:hover{background:rgba(2,8,23,0.03)}
+.loc input{accent-color: #22d3ee}
+
+.field{margin:8px 0 12px 0}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#031026;font-weight:700;box-shadow:0 8px 30px rgba(34,211,238,0.08)}
+.small{font-size:13px;color:var(--muted)}
+
+/* map area */
+.canvas-wrap{position:relative;border-radius:12px;padding:12px;min-height:720px;overflow:hidden}
+svg{width:100%;height:720px;border-radius:8px;background:#eef2f3;box-shadow: 0 6px 24px rgba(2,8,23,0.12);border:1px solid rgba(2,8,23,0.04)}
+
+/* info */
+.info{margin-top:12px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap}
+.card{background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);padding:10px;border-radius:10px;min-width:170px;border:1px solid rgba(255,255,255,0.02)}
+.route-text{font-weight:700;color:#0c2330}
+.stat{font-size:13px;color:var(--muted)}
+
+/* map labels & edges */
+.node-label{font-size:12px;fill:#0b2230;text-anchor:middle;pointer-events:none}
+.edge-label{font-size:11px;fill:#6a6f76;pointer-events:none}
+.edge-line{stroke:#cfcfcf;stroke-width:2;opacity:0.9;stroke-linecap:round}
+.edge-highlight{stroke:url(#pathGrad);stroke-width:6;filter:drop-shadow(0 0 10px rgba(34,211,238,0.14));stroke-linecap:round}
+
+/* pin & shadow */
+.pin-shadow{fill:rgba(2,8,23,0.12)}
+.pin-core{stroke:rgba(255,255,255,0.14);stroke-width:1;filter:url(#pinDrop)}
+
+/* pulses */
+@keyframes pulseGreen { 0% { r:0; opacity:0.35; transform: scale(0.9); } 50% { r:26; opacity:0.08; transform: scale(1.04); } 100% { r:0; opacity:0.0; transform: scale(0.9); } }
+@keyframes pulseRed { 0% { r:0; opacity:0.35; transform: scale(0.9); } 50% { r:28; opacity:0.09; transform: scale(1.02); } 100% { r:0; opacity:0.0; transform: scale(0.9); } }
+
+@media (max-width:980px){
+  .wrap{grid-template-columns:1fr; padding:12px}
+  svg{height:520px}
+}
+footer{grid-column:1/-1;color:var(--muted);font-size:13px;margin-top:6px;text-align:center}

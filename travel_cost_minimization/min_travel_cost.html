@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Travel Cost Minimization — Multi-City Smart Cities Demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">TRIP</div>
+      <div>
+        <h1>Travel Cost Minimizer</h1>
+        <!-- <p class="subtitle">Cost = distance (km) × traffic rate (1–10) — intercity & intra-city routing</p> -->
+      </div>
+    </header>
+
+    <aside class="panel controls">
+      <div class="city-list">
+        <div class="chip checked">Smart Cities Demo</div>
+      </div>
+
+      <div style="height:10px"></div>
+
+      <label class="small">Source City</label>
+      <select id="srcCity" class="city-select"></select>
+
+      <h3>Choose Source Location</h3>
+      <div class="list card-input" id="sources"></div>
+
+      <div style="height:6px"></div>
+
+      <label class="small">Destination City</label>
+      <select id="dstCity" class="city-select"></select>
+
+      <h3>Choose Destination Location</h3>
+      <div class="list card-input" id="destinations"></div>
+
+      <div style="height:10px"></div>
+      <div class="field">
+        <button id="calcBtn" class="btn">Calculate Shortest Path</button>
+      </div>
+
+      <div style="height:10px"></div>
+      <div class="small">Legend</div>
+      <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:8px"><div style="width:12px;height:12px;border-radius:50%;background:#2ecc71"></div><div class="small">Source</div></div>
+        <div style="display:flex;align-items:center;gap:8px"><div style="width:12px;height:12px;border-radius:50%;background:#ff676d"></div><div class="small">Destination</div></div>
+        <div style="display:flex;align-items:center;gap:8px"><div style="width:12px;height:12px;border-radius:50%;background:linear-gradient(180deg,#3aa0ff,#2b6bff)"></div><div class="small">Intermediate</div></div>
+      </div>
+    </aside>
+
+    <main class="panel canvas-wrap">
+      <svg id="viz" viewBox="0 0 1200 720" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <pattern id="mapDots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="24" height="24" fill="#eef2f3"></rect>
+            <circle cx="12" cy="12" r="0.5" fill="#f2f4f6"></circle>
+          </pattern>
+          <linearGradient id="pathGrad" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#8b5cf6"/>
+          </linearGradient>
+          <linearGradient id="pinBlue" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#3aa0ff"/><stop offset="1" stop-color="#2b6bff"/>
+          </linearGradient>
+          <filter id="pinDrop" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.12"/>
+          </filter>
+        </defs>
+      </svg>
+
+      <div class="info">
+        <div class="card">
+          <div class="route-text" id="routeText">Route: —</div>
+          <div class="stat" id="routeNodes">Path nodes: —</div>
+        </div>
+        <div class="card">
+          <div style="font-weight:700;font-size:16px" id="costText">Total Cost: —</div>
+          <div class="small" id="timeText">Estimated Time: —</div>
+        </div>
+        <div class="card">
+          <div style="font-weight:700" id="trafficText">Avg Traffic: —</div>
+          <div class="small">Traffic is sampled 1–10 per edge (city-informed)</div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      Travel Cost Minimization ✨-choose the best path💫
+    </footer>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
